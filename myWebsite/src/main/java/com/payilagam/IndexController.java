@@ -2,6 +2,8 @@ package com.payilagam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -11,12 +13,17 @@ import jakarta.servlet.http.HttpSession;
 public class IndexController {
 	
 	@RequestMapping("index")
-	public String index(HttpServletRequest request) {
+	public ModelAndView index(@RequestParam("uname") String login, HttpSession session) {
 		System.out.println("index called");
-		HttpSession session = request.getSession();
-		String name = request.getParameter("name");
-		session.setAttribute("usern", name);
-		return "demo";
+//		HttpSession session = request.getSession();
+//		String name = request.getParameter("name");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("usern", login);
+		mav.setViewName("index");
+		session.setAttribute("usern", login);
+		return mav;
+		//return "index";
 		
 	}
 	
