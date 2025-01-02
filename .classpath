@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="MySpringProject/src/test/java/|MySpringProject/src/main/java/|myWebsite/src/test/java/|myWebsite/src/main/java/|demo/src/test/java/|demo/src/main/java/" kind="src" path=""/>
+	<classpathentry kind="src" path="demo/src/main/java"/>
+	<classpathentry kind="src" path="demo/src/test/java"/>
+	<classpathentry kind="src" path="MySpringProject/src/main/java"/>
+	<classpathentry kind="src" path="MySpringProject/src/test/java"/>
+	<classpathentry kind="src" path="myWebsite/src/main/java"/>
+	<classpathentry kind="src" path="myWebsite/src/test/java"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
