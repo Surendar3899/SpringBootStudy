@@ -1,0 +1,16 @@
+show databases;
+
+use jvlcart
+
+
+show tables;
+
+show COLUMNS from product;
+
+DROP TABLE product;
+
+select * from products;
+
+
+delete column:
+    ALTER TABLE jvlcart.product_images drop column images;

@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1>Welcome to My JSP Page</h1>
-
+    
+<!-- Using Expression Language (EL) to display session attribute -->
+    <p>Hello, ${usern}!</p>
     
 </body>
 </html>
