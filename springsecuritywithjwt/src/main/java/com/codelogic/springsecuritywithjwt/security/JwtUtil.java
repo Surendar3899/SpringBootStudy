@@ -28,7 +28,8 @@ public class JwtUtil {
    
    
    // expiration time
-   private final int jwtExpirationMs = 86400000;
+   //private final int jwtExpirationMs = 86400000;
+   private final int jwtExpirationMs = 2 * 60 * 1000;
    
    private UserRepository userRepository;
 

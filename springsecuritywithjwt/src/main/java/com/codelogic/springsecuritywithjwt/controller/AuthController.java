@@ -17,6 +17,9 @@ import com.codelogic.springsecuritywithjwt.entity.User;
 import com.codelogic.springsecuritywithjwt.repository.RoleRepository;
 import com.codelogic.springsecuritywithjwt.repository.UserRepository;
 import com.codelogic.springsecuritywithjwt.security.JwtUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -32,6 +35,7 @@ public class AuthController {
 
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserRepository userRepository,
             RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        System.out.println("AuthController constructor called");        
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
@@ -75,8 +79,13 @@ public class AuthController {
 
     // Login API - // lOGIN endpoint http://localhost:8080/auth/login
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
+    public ResponseEntity<String> login(@RequestBody User loginRequest) throws JsonProcessingException {
         System.out.println("Login API Called");
+        System.out.println(loginRequest.getUsername());
+        System.out.println(loginRequest.getPassword());
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(loginRequest);
+        System.out.println(json);
          
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));

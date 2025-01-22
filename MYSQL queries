@@ -14,3 +14,12 @@ select * from products;
 
 delete column:
     ALTER TABLE jvlcart.product_images drop column images;
+    
+    
+delete table without reset auto increment:
+         
+         DELETE FROM table_name;    
+         
+         
+delete table reset auto increment:     
+         TRUNCATE TABLE customers;    
