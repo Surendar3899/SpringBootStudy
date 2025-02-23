@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import com.first.demo.entity.Employee;
+import com.first.demo.exception.EmployeeNotFoundException;
 import com.first.demo.service.EmployeeService;
 
 import javax.validation.Valid;
@@ -35,6 +36,9 @@ public class EmployeeController {
                                                    @Valid @RequestBody Employee updatedEmployee) {
         System.out.println("update >>>>>>>>>");                                            
         Employee employee = employeeService.updateEmployee(employeeId, updatedEmployee);
+        if (employee == null) {
+            throw new EmployeeNotFoundException("Employee with id " + employeeId + " not found");
+        }
         return ResponseEntity.ok(employee);
     }
 
