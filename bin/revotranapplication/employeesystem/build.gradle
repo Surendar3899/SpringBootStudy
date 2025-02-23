@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.9'  // Ensure correct Spring Boot version
+    id 'java'
+}
+
+group = 'com.revotran'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'  // Ensure Java 1.8 compatibility
+
+repositories {
+    mavenCentral()  // Maven central is where dependencies will be fetched from
+}
+
+dependencies {
+    // Spring Boot Web and Data JPA dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.9' 
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.9'
+    
+    // MySQL Connector dependency
+    implementation 'mysql:mysql-connector-java:8.0.29' 
+
+    // Hibernate Validator and Jakarta Validation
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+    implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
+
+    // Spring Boot Test dependencies with explicit version
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.9'
+}
+
+test {
+    useJUnitPlatform()  // Use JUnit 5 for testing
+}
