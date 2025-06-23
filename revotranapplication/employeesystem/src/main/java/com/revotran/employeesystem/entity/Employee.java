@@ -9,7 +9,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long employeeId;
+    private Long id;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -26,11 +26,11 @@ public class Employee {
 
 
    public Long getEmployeeId() {
-        return employeeId;
+        return id;
     }
 
     public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+        this.id = employeeId;
     }
 
     public String getName() {

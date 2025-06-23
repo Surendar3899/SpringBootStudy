@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Register Page</h1>
+
+    <div id="responseMessage" style="margin-top:20px; color:green;"></div>
+
+    <!-- <form action="http://localhost:8080/add/student" method="post"> -->
+    <form id="registerForm">
+
+        <label for="rno">Enter Roll no:</label>
+        <input name="id" type="number"><br><br>
+
+        <label for="name">Enter name:</label>
+        <input name="name" type="text"><br><br>
+
+        <label for="gender">Enter gender:</label>
+        <input name="gender" type="text"><br><br>
+
+        <label for="technology">Enter technology:</label>
+        <input name="technology" type="text">
+
+        <button type="submit">Submit button</button>
+
+    </form>
+
+
+
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // prevent default form submission
+
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData);
+
+            fetch("http://localhost:8080/add/student", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: params
+            })
+            .then(response => response.text()) // expecting plain text response
+            .then(data => {
+                document.getElementById("responseMessage").innerText = data;
+            })
+            .catch(error => {
+                document.getElementById("responseMessage").innerText = "Error: " + error;
+            });
+        });
+    </script>
+</body>
+</html> 

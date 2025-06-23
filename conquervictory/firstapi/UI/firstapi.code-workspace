@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "springboot-kafka",
+			"path": "../../../KafkaConnect/springboot-kafka"
+		}
+	],
+	"settings": {}
+}
