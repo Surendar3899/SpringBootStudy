@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-   private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;

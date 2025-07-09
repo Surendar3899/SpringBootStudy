@@ -1,0 +1,13 @@
+<h2>Available Courses</h2>
+<table border="1">
+  <tr>
+    <th>Course ID</th>
+    <th>Course Name</th>
+    <th>Trainer</th>
+  </tr>
+  <tr *ngFor="let course of courses">
+    <td>{{ course.courseId }}</td>
+    <td>{{ course.courseName }}</td>
+    <td>{{ course.trainer }}</td>
+  </tr>
+</table>

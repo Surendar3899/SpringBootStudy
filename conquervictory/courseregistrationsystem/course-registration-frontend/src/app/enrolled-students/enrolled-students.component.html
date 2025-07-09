@@ -1,0 +1,13 @@
+<h2>Enrolled Students</h2>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Course Name</th>
+  </tr>
+  <tr *ngFor="let reg of enrolled">
+    <td>{{ reg.name }}</td>
+    <td>{{ reg.emailId }}</td>
+    <td>{{ reg.courseName }}</td>
+  </tr>
+</table>
