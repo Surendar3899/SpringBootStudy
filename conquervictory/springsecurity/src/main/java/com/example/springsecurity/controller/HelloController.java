@@ -23,4 +23,9 @@ public class HelloController {
         return "Conquer victory";
     }
 
+    @GetMapping("/public/demo")
+    public String publicapi(){
+        return "This is Public Page , no need authentication";
+    }
+
 }

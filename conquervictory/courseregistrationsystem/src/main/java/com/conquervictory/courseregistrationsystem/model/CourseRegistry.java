@@ -1,5 +1,7 @@
 package com.conquervictory.courseregistrationsystem.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class CourseRegistry {
         this.name = name2;
         this.emailId = emailId2;
         this.courseName = courseName2;
+        this.dateCreated = new Date();
     }
 
     public CourseRegistry(){
@@ -31,5 +34,6 @@ public class CourseRegistry {
     private String name;
     private String emailId;
     private String courseName;
+    private Date dateCreated;
 
 }
