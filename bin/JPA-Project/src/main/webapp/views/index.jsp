@@ -8,6 +8,7 @@ Enter Id <input type = "text" name = "id"><br>
 Enter Name <input type = "text" name = "name"><br>
 <input type = "submit"><br>
 </form>
+<<<<<<< HEAD
 
 
 <h2> Display user Information </h2>
@@ -28,5 +29,7 @@ Enter Id <input type = "text" name = "id"><br>
 Enter Id <input type = "text" name = "id"><br>
 <input type = "submit"><br>
 </form>
+=======
+>>>>>>> bb0512f (changes from asus)
 </body>
 </html>
