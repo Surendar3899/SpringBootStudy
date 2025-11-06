@@ -1,0 +1,41 @@
+   ┌─────────────────────────┐
+   │        Client           │
+   │ (Browser / Postman / App) 
+   └─────────────┬──────────┘
+                 │ HTTP Request
+                 ▼
+   ┌─────────────────────────┐
+   │   Embedded Tomcat       │
+   │ (Servlet Container)     │
+   └─────────────┬──────────┘
+                 │
+                 ▼
+   ┌─────────────────────────┐
+   │  SecurityFilterChain    │
+   │  (Series of Filters)    │
+   │                         │
+   │ • SecurityContextPersistenceFilter
+   │ • UsernamePasswordAuthenticationFilter
+   │ • BasicAuthenticationFilter
+   │ • CsrfFilter
+   │ • AuthorizationFilter
+   └─────────────┬──────────┘
+     (If FAIL)   │   (If PASS)
+   401/403       ▼
+             ┌─────────────────────────┐
+             │   DispatcherServlet      │
+             │ (Front Controller of MVC)│
+             └─────────────┬───────────┘
+                           │
+                           ▼
+             ┌─────────────────────────┐
+             │   Controller Method      │
+             │  (@GetMapping, etc.)     │
+             └─────────────┬───────────┘
+                           │ Response
+                           ▼
+             ┌─────────────────────────┐
+             │       Client             │
+             │   (Receives JSON/HTML)   │
+             └─────────────────────────┘
+

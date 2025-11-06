@@ -26,22 +26,60 @@ public class SecurityConfiguration {
     @Autowired
     UserDetailsService userDetailsService;
 
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    //     log.info("securityfilterchain called");
+    //     http.cors(Customizer.withDefaults());
+    //     http.csrf(customizer -> customizer.disable());
+    //     http.authorizeRequests(request -> request
+    //                             .antMatchers("/admin/**").hasRole("ADMIN")   // this for springboot 2.7.9, if use spring 6 use requestMatchers
+    //                             .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
+    //                             .antMatchers("/public/**").permitAll()
+    //                             .anyRequest().authenticated());
+    //    http.formLogin(Customizer.withDefaults());  // for default page
+    //    http.httpBasic(Customizer.withDefaults());  // for postman hits
+        
+    //     //http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    //     return http.build();
+    // }
+
+
+
+    // For ui request,chatgpt suggest
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("securityfilterchain called");
         http.cors(Customizer.withDefaults());
+        //http.csrf(Customizer.withDefaults());   // ✅ enable CSRF for browser UI
         http.csrf(customizer -> customizer.disable());
         http.authorizeRequests(request -> request
-                                .antMatchers("/admin/**").hasRole("ADMIN")   // this for springboot 2.7.9, if use spring 6 use requestMatchers
-                                // .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
-                                // .antMatchers("/public/**").permitAll()
-                                .anyRequest().authenticated());
-        //http.formLogin(Customizer.withDefaults());  // for default page
-       // http.httpBasic(Customizer.withDefaults());  // for postman hits
-        
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
+            .antMatchers("/public/**").permitAll()
+            .anyRequest().authenticated()
+        );
+        //http.formLogin(Customizer.withDefaults());  // ✅ browser login form
+        http.httpBasic(Customizer.withDefaults());  // ✅ still works for Postman
         return http.build();
     }
+
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    //     log.info("securityfilterchain called");
+
+    //     http
+    //         .cors(Customizer.withDefaults())
+    //         .csrf(csrf -> csrf.disable())
+    //         .authorizeRequests(auth -> auth
+    //             .anyRequest().authenticated()   // 👈 no roles, just authentication
+    //         )
+    //         .httpBasic(Customizer.withDefaults());  // or formLogin() if using UI
+
+    //     http.sessionManagement(session -> session
+    //         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+    //     return http.build();
+    // }
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
@@ -53,19 +91,19 @@ public class SecurityConfiguration {
     }
 
 
-     @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")                         // Allow CORS for all endpoints
-                        .allowedOrigins("http://localhost:5500", "http://127.0.0.1:5500")   // Allow requests from your frontend
-                        .allowedMethods("*")                       // Allow all HTTP methods: GET, POST, etc.
-                        .allowedHeaders("*")                       // Allow all headers
-                        .allowCredentials(true);                   // Allow cookies or credentials
-            }
-        };
-    }
+    //  @Bean
+    // public WebMvcConfigurer corsConfigurer() {
+    //     return new WebMvcConfigurer() {
+    //         @Override
+    //         public void addCorsMappings(CorsRegistry registry) {
+    //             registry.addMapping("/**")                         // Allow CORS for all endpoints
+    //                     .allowedOrigins("http://localhost:5500", "http://127.0.0.1:5500")   // Allow requests from your frontend
+    //                     .allowedMethods("*")                       // Allow all HTTP methods: GET, POST, etc.
+    //                     .allowedHeaders("*")                       // Allow all headers
+    //                     .allowCredentials(true);                   // Allow cookies or credentials
+    //         }
+    //     };
+    // }
 
     
 

@@ -9,8 +9,13 @@ import com.conquervictory.courseregistrationsystem.model.UserPrincipal;
 import com.conquervictory.courseregistrationsystem.model.Users;
 import com.conquervictory.courseregistrationsystem.repository.UserRepository;
 
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+
+
 
 @Service
+@Log4j2
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -18,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("loadUserByUsername called "+username);
+        log.info("loadUserByUsername called "+username);
         Users user = userRepository.getByUsername(username);
         if(user == null){
             throw new UsernameNotFoundException("User Not Found");

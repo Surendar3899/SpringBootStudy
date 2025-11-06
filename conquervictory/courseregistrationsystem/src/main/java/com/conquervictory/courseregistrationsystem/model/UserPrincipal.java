@@ -7,6 +7,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class UserPrincipal implements UserDetails {
 
     private Users user;
@@ -18,6 +21,8 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        log.info("UserPrincipal.getAuthorities() called for user: " + user.getUsername()
+        + " with role: " + user.getRoles());
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_"+user.getRoles()));
     }
 

@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <p *ngIf="message; else loading">{{ message }}</p>
+  <ng-template #loading><p>Loading...</p></ng-template>
+</div>
+<app-menu></app-menu>
